@@ -1,0 +1,55 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Secrets & credentials
+secrets.json
+
+# Environment files
+.env
+.env.*
+
+# macOS & system files
+.DS_Store
+
+# Testing / coverage
+.coverage
+coverage.xml
+htmlcov/
+.cache/
+.pytest_cache/
+
+# Logs
+*.log
+
+# Python egg info
+*.egg-info/
+*.egg
+
+# Compiled binary
+*.so
+
+# Mypy, Pylint, Bandit etc.
+.mypy_cache/
+pylint-report.txt
+bandit-report.json
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Backup files
+*~
+*.bak
+*.swp
+*.swo
+
+# Optional: ignore SQLite or other local dev databases
+*.db
+*.sqlite3
