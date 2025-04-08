@@ -15,6 +15,7 @@ https://w3speedup.com/category/server
 https://w3speedup.com/category/tips-trick
 https://w3speedup.com/category/web-design
 https://w3speedup.com/category/website-speed
+https://w3speedup.com/complete-seo-checklist-for-your-website/
 https://w3speedup.com/cost-effective-ways-to-strengthen-your-startups-security/
 https://w3speedup.com/guide-to-magento-speed-optimization/
 https://w3speedup.com/how-digital-marketing-agency-helps-maximize-roi-with-ppc/
@@ -23,7 +24,6 @@ https://w3speedup.com/how-to-improve-conversion-rate-on-a-shopify-site/
 https://w3speedup.com/job/content-writer-ai-specialist/
 https://w3speedup.com/job/php-developer/
 https://w3speedup.com/local-seo-checklist-tips-to-boost-your-rankings/
-https://w3speedup.com/on-page-seo-services/
 https://w3speedup.com/optimize-core-web-vitals/
 https://w3speedup.com/quality-assurance-and-benefits-of-call-recordings-for-business/
 https://w3speedup.com/seo-ranking-factors/
@@ -33,7 +33,7 @@ https://w3speedup.com/staff-augmentation-in-web-performance-optimization/
 https://w3speedup.com/the-best-5-ugc-platforms-in-2025-features-benefits/
 https://w3speedup.com/tips-to-reduce-website-bounce-rate/
 https://w3speedup.com/tools/adsense-revenue-calculator/
-https://w3speedup.com/tools/angular-formatter/
+https://w3speedup.com/tools/angular-beautifier/
 https://w3speedup.com/tools/babel-beautifier/
 https://w3speedup.com/tools/bbcode-to-html-converter/
 https://w3speedup.com/tools/capm-calculator/
@@ -41,6 +41,7 @@ https://w3speedup.com/tools/case-converter/
 https://w3speedup.com/tools/cash-flow-to-debt-ratio-calculator/
 https://w3speedup.com/tools/cbeautifier/
 https://w3speedup.com/tools/code-to-text-ratio/
+https://w3speedup.com/tools/compound-interest-rate-calculator/
 https://w3speedup.com/tools/cpp-beautifier/
 https://w3speedup.com/tools/critical-css-generator/
 https://w3speedup.com/tools/csharp-beautifier/
@@ -51,10 +52,15 @@ https://w3speedup.com/tools/css-to-scss-converter/
 https://w3speedup.com/tools/css-to-stylus-converter/
 https://w3speedup.com/tools/current-ratio-calculator/
 https://w3speedup.com/tools/da-checker/
+https://w3speedup.com/tools/depreciation-calculator/
 https://w3speedup.com/tools/dividend-discount-model-calculator/
 https://w3speedup.com/tools/duplicate-lines-remover/
 https://w3speedup.com/tools/earnings-per-share-calculator/
+https://w3speedup.com/tools/ebit-calculator/
+https://w3speedup.com/tools/ebitda-calculator/
+https://w3speedup.com/tools/economic-value-added-eva-calculator/
 https://w3speedup.com/tools/empty-lines-remover/
+https://w3speedup.com/tools/equivalent-rate-calculator-aer/
 https://w3speedup.com/tools/extra-spaces-remover/
 https://w3speedup.com/tools/extract-metadata-from-websites/
 https://w3speedup.com/tools/future-value-calculator/
@@ -75,6 +81,8 @@ https://w3speedup.com/tools/html-to-yaml-converter/
 https://w3speedup.com/tools/image-extractor/
 https://w3speedup.com/tools/image-optimization/
 https://w3speedup.com/tools/image-to-pdf-converter/
+https://w3speedup.com/tools/interest-coverage-ratio-calculator/
+https://w3speedup.com/tools/inventory-turnover-calculator/
 https://w3speedup.com/tools/java-beautifier/
 https://w3speedup.com/tools/javascript-beautifier/
 https://w3speedup.com/tools/jpg-to-png-converter/
@@ -109,6 +117,7 @@ https://w3speedup.com/tools/ssl-checker/
 https://w3speedup.com/tools/text-minifier/
 https://w3speedup.com/tools/typescript-beautifier/
 https://w3speedup.com/tools/url-opener/
+https://w3speedup.com/tools/wacc-calculator/
 https://w3speedup.com/tools/webp-convertor/
 https://w3speedup.com/tools/webp-to-jpg-converter/
 https://w3speedup.com/tools/whitespaces-remover/

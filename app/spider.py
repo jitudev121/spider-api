@@ -2,94 +2,92 @@ from bs4 import BeautifulSoup
 from app.link_finder import LinkFinder
 from app.general import *
 from protego import Protego
-from urllib.parse import urljoin,urlparse
+from urllib.parse import urljoin, urlparse
+import requests
 
 class Spider:
+    def __init__(self, project_name, base_url, domain_name, domain_to_include):
+        self.project_name = f'temp/{project_name}'
+        self.base_url = base_url
+        self.domain_name = domain_name
+        self.queue_file = self.project_name + '/queue.txt'
+        self.crawled_file = self.project_name + '/crawled.txt'
+        self.domain_to_include = domain_to_include
+        self.queue = set()
+        self.crawled = set()
+        self.rp = None
 
-    project_name = ''
-    base_url = ''
-    domain_name = ''
-    queue_file = ''
-    crawled_file = ''
-    domain_to_include = ''
-    queue = set()
-    crawled = set()
-    rp = None
-
-    def __init__(self,project_name,base_url,domain_name,domain_to_include):
-        Spider.project_name = f'temp/{project_name}'
-        Spider.base_url = base_url
-        Spider.domain_name = domain_name
-        Spider.queue_file = Spider.project_name + '/queue.txt'
-        Spider.crawled_file = Spider.project_name + '/crawled.txt'
-        Spider.domain_to_include = domain_to_include
         self.boot()
         self.setup_robots()
-        self.crawl_page('First Spider',Spider.base_url)
-    
+        self.crawl_page('First Spider', self.base_url)
+
     def setup_robots(self):
-        robots_url = urljoin(Spider.base_url,'robots.txt')
-        get_robots_data = requests.get(robots_url).text
-        Spider.rp = Protego.parse(get_robots_data)
+        try:
+            robots_url = urljoin(self.base_url, 'robots.txt')
+            get_robots_data = requests.get(robots_url, timeout=10).text
+            self.rp = Protego.parse(get_robots_data)
+        except Exception as e:
+            print(f"Error loading robots.txt: {e}")
+            self.rp = Protego.parse("")  # Empty fallback
 
-    @staticmethod
-    def boot():
-        create_project_dir(Spider.project_name)
-        create_data_files(Spider.project_name,Spider.base_url)
-        Spider.queue = file_to_set(Spider.queue_file)
-        Spider.crawled = file_to_set(Spider.crawled_file)
+    def boot(self):
+        create_project_dir(self.project_name)
+        create_data_files(self.project_name, self.base_url)
+        self.queue = file_to_set(self.queue_file)
+        self.crawled = file_to_set(self.crawled_file)
 
-    @staticmethod
-    def crawl_page(thread_name,page_url):
-        if page_url not in Spider.crawled:
+    def crawl_page(self, thread_name, page_url):
+        if page_url not in self.crawled:
             print(thread_name + ' now crawling ' + page_url)
-            print('Queue ' + str(len(Spider.queue)) + ' | Crawled ' + str(len(Spider.crawled)))
-            Spider.add_links_to_queue(Spider.gather_link(page_url))
-            Spider.queue.remove(page_url)
-            Spider.crawled.add(page_url)
-            Spider.update_files()
-    
-    @staticmethod
-    def gather_link(page_url):
+            print('Queue ' + str(len(self.queue)) + ' | Crawled ' + str(len(self.crawled)))
+            self.add_links_to_queue(self.gather_links(page_url))
+            self.queue.discard(page_url)
+            self.crawled.add(page_url)
+            self.update_files()
+
+    def gather_links(self, page_url):
         html_string = ''
         try:
-            # print(page_url)
             response = getFileContent(page_url)
             html_bytes = BeautifulSoup(response, 'html.parser')
-            html_string  = str( html_bytes )
-            finder = LinkFinder(Spider.base_url,page_url)
+            html_string = str(html_bytes)
+            finder = LinkFinder(self.base_url, page_url)
             finder.feed(html_string)
         except Exception as e:
-            print(e)
+            print(f"Error while gathering links from {page_url}: {e}")
             return set()
         return finder.page_links()
-    
-    
-    @staticmethod
-    def add_links_to_queue(links):
+
+    def add_links_to_queue(self, links):
         for url in links:
+            if not self.is_valid_url(url):
+                continue
             parsed_url = urlparse(url)
-            if parsed_url.hostname not in Spider.domain_to_include:
+            if parsed_url.hostname not in self.domain_to_include:
                 continue
-            if url in Spider.queue:
+            if url in self.queue or url in self.crawled:
                 continue
-            if url in Spider.crawled:
-                continue
-            if Spider.can_fetch_url(url):
-                Spider.queue.add(url)
+            if self.can_fetch_url(url):
+                self.queue.add(url)
 
-    @staticmethod
-    def update_files():
-        set_to_file(Spider.queue,Spider.queue_file)
-        set_to_file(Spider.crawled,Spider.crawled_file)
-        remove_duplicate_url(Spider.crawled_file)
+    def update_files(self):
+        set_to_file(self.queue, self.queue_file)
+        set_to_file(self.crawled, self.crawled_file)
+        remove_duplicate_url(self.crawled_file)
+        remove_duplicate_url(self.queue_file)
 
-
-    @staticmethod
-    def can_fetch_url(url):
-        if '?' in url and not url.endswith('/'):
-            base_url = url.split('?')[0]
-            query_string = url.split('?')[1]
-            normalized_url = f"{base_url}/?{query_string}"
-            return Spider.rp.can_fetch(normalized_url, "*")
-        return Spider.rp.can_fetch(url, "*")
+    def can_fetch_url(self, url):
+        if self.rp:
+            if '?' in url and not url.endswith('/'):
+                base_url = url.split('?')[0]
+                query_string = url.split('?')[1]
+                normalized_url = f"{base_url}/?{query_string}"
+                return self.rp.can_fetch(normalized_url, "*")
+            return self.rp.can_fetch(url, "*")
+        return True  # If robots.txt failed, allow by default
+    def is_valid_url(self, url):
+        try:
+            parsed = urlparse(url)
+            return all([parsed.scheme in ('http', 'https'), parsed.netloc])
+        except Exception:
+            return False

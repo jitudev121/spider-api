@@ -8,6 +8,7 @@ https://diviextended.com/divi-child-themes/
 https://diviextended.com/divi-layouts/
 https://diviextended.com/divi-plugins/
 https://diviextended.com/documentation/
+https://diviextended.com/faq/
 https://diviextended.com/featured-on/
 https://diviextended.com/join-the-club/
 https://diviextended.com/licenses/
@@ -16,13 +17,16 @@ https://diviextended.com/my-account/downloads/
 https://diviextended.com/my-account/orders/
 https://diviextended.com/privacy-policy/
 https://diviextended.com/product/all-in-one-carousel-for-divi/
+https://diviextended.com/product/blogy-divi-blog-layout-pack/
 https://diviextended.com/product/divi-ajax-search/
 https://diviextended.com/product/divi-blog-extras/
 https://diviextended.com/product/divi-blurb-extended/
 https://diviextended.com/product/divi-cart-pro/
 https://diviextended.com/product/divi-content-toggle/
+https://diviextended.com/product/divi-edu-child-theme/
 https://diviextended.com/product/divi-flexile-footers/
 https://diviextended.com/product/divi-flexile-headers/
+https://diviextended.com/product/divi-flexile-hero-sections/
 https://diviextended.com/product/divi-flexile-pricing-tables/
 https://diviextended.com/product/divi-gallery-extended/
 https://diviextended.com/product/divi-girl-child-theme/
@@ -39,6 +43,7 @@ https://diviextended.com/product/divi-woocommerce-extended/
 https://diviextended.com/product/events-calendar-child-theme-for-divi/
 https://diviextended.com/product/flexile/
 https://diviextended.com/product/gravity-forms-styler-for-divi/
+https://diviextended.com/refund-policy/
 https://diviextended.com/request-a-quote/
 https://diviextended.com/support/
 https://diviextended.com/terms-of-service/

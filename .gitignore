@@ -53,3 +53,5 @@ bandit-report.json
 # Optional: ignore SQLite or other local dev databases
 *.db
 *.sqlite3
+
+*.txt

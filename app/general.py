@@ -7,6 +7,10 @@ from urllib.request import urlopen
 from urllib.request import Request
 from urllib.parse import urlparse
 from bs4 import BeautifulSoup
+import threading
+
+file_write_lock = threading.Lock()
+
 
 class RoundRobinFetcher:
     def __init__(self):
@@ -46,9 +50,10 @@ def write_file(path, data):
         f.write(data)
 
 def append_to_file(path, data):
-    with open(path, 'a') as file:
-        file.write(data + '\n')
- 
+    with file_write_lock:  # This ensures only one thread writes at a time
+        with open(path, 'a') as file:
+            file.write(data + '\n')
+
 def delete_file_content(path):
     with open(path, 'w'):
         pass
@@ -69,8 +74,10 @@ def getFileContent(page_url):
     return fetcher.get_file_content(page_url)
 
 def remove_duplicate_url(file):
-    urls = file_to_set(file)
-    with open(file, 'w') as f:
-        for url in sorted(urls):
-             f.write(url + '\n')
+    with file_write_lock:
+        urls = file_to_set(file)
+        with open(file, 'w') as f:
+            for url in sorted(urls):
+                f.write(url + '\n')
+
 
